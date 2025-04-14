@@ -2,7 +2,9 @@ class BooksController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
+    @book = Book.new
     @books = Book.all
+    @user = current_user
   end
 
   def show
