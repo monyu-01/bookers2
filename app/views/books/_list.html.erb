@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+  <div class="">
+    <div class="">
+      <div class="">
+        <h2>User info</h2>
+        <table class="table">
+          <tr>
+            <td>
+              <%= image_tag current_user.get_profile_image %>
+            </td>
+          </tr>
+          <tr>
+            <th>name</th>
+            <td><%= current_user.name %></td>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <td><%= current_user.introduction %></td>
+          </tr>
+        </table>
+
+        <div class="">
+          <%= link_to edit_user_path(current_user), class: "" do %>
+            <i class="fas fa-user-cog"></i>
+          <% end %>
+        </div>
+
+        <h2 class="">New book</h2>
+        <%= form_with model: book, local: true do |f| %>
+          <div class="">
+            <%= f.label :title, "Title" %>
+            <%= f.text_field :title, class: "" %>
+          </div>
+          <div class="">
+            <%= f.label :body, "Opinion" %>
+            <%= f.text_area :body, class: "" %>
+          </div>
+          <div class="">
+            <%= f.submit "Submit", class: "", data: { disable_with: "Submit" } %>
+          </div>
+        <% end %>
+      </div>
