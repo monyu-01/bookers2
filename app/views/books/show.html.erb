@@ -11,16 +11,16 @@
         </tr>
         <tr>
           <th>name</th>
-          <td><%= @user.name %></td>
+          <td><%= current_user.name %></td>
         </tr>
         <tr>
           <th>introduction</th>
-          <td><%= @user.introduction %></td>
+          <td><%= current_user.introduction %></td>
         </tr>
       </table>
 
       <div class="">
-        <%= link_to edit_user_path(@user), class: "" do %>
+        <%= link_to edit_user_path(current_user), class: "" do %>
           <i class="fas fa-user-cog"></i>
         <% end %>
       </div>
@@ -41,7 +41,7 @@
       <% end %>
     </div>
 
-    <div class="">
+    <div class="table">
       <h2>Books</h2>
       <table class="">
         <thead>
@@ -61,14 +61,17 @@
                 <% else %>
                   <%= image_tag "no_image.jpg", class: "" %>
                 <% end %>
+                <br>
+                 <%= link_to book.user.name, user_path(book.user) %>
               </td>
               <td><%= link_to @book.title, book_path(@book) %></td>
               <td><%= book.body %></td>
               <td><%= link_to "Edit", edit_book_path(@book), class:'' %></td>
               <td>
-                <%= link_to "Destroy", book_path(@book), method: :delete, class: '', data: { confirm: "本当に消しますか？" %>
+                <%= link_to "Destroy", book_path(@book), method: :delete, class: '', data: { confirm: "本当に消しますか？" } %>
               </td>
             </tr>
+          <% end %>
         </tbody>
       </table>
     </div>  
