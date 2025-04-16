@@ -1,0 +1,36 @@
+<body>
+  <h1><strong>User info</strong></h1>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this book from being updated:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @user, local: true do |f| %>
+    <div class="field">
+      <%= f.label :name, 'Name' %>
+      <%= f.text_field :name %>
+    </div>
+    
+    <div class="field">
+     <label for="inputImage">Image</label>
+      <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %> 
+    </div>
+
+    <div class="field">
+      <%= f.label :introduction, 'Introduction' %>
+      <%= f.text_area :introduction %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Update User' %>
+    </div>
+    <% end %>
+    
+</body>
