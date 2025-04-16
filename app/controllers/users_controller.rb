@@ -2,11 +2,14 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update]
 
   def index
+    @book = Book.new
     @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
+    @book = Book.new
+    @books = @user.books
   end
 
   def new
@@ -16,7 +19,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to @user, notice: 'Welcome! You have signed up successfully.'
     else
       render :new
     end
@@ -29,7 +32,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to @user, notice: 'You have updated user successfully.'
     else
       render :edit
     end
