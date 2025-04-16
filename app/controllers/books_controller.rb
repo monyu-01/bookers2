@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-
+  
   def index
     @book = Book.new
     @books = Book.all
@@ -37,7 +36,7 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      redirect_to @book, notice: 'Book was successfully updated.'
+      redirect_to @book, notice: 'You have updated book successfully.'
     else
       render :edit
     end
