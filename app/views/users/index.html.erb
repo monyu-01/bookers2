@@ -1,6 +1,28 @@
-<h1>Users List</h1>
-<ul>
-  <% @users.each do |user| %>
-    <li><%= link_to user.name, user_path(user) %></li>
-  <% end %>
-</ul>
+<main>
+  <%= render partial: "books/list", locals: { book: @book } %>
+      <div class="">
+        <h2>Users</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>name</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <%= image_tag current_user.get_profile_image %>
+                </td>
+                <td><%= user.name %></td>
+                <td><%= link_to 'Show', user_path(user) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
