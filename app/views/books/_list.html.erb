@@ -9,9 +9,9 @@
     </div>
  <% end %>
  
- <div class="">
-    <div class="">
-      <div class="">
+ <div class="container pt-3 px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-3">
         <h2>User info</h2>
         <table class="table">
           <tr>
@@ -29,25 +29,25 @@
           </tr>
         </table>
 
-        <div class="">
-          <%= link_to edit_user_path(current_user), class: "" do %>
+        <div class="row pt-3">
+          <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block edit_user_17 " do %>
             <i class="fas fa-user-cog"></i>
           <% end %>
         </div>
 
-        <h2 class="">New book</h2>
+        <h2 class="pt-3">New book</h2>
 
         <%= form_with model: book, local: true do |f| %>
-          <div class="">
+          <div class="form-group">
             <%= f.label :title, "Title" %>
-            <%= f.text_field :title, class: "" %>
+            <%= f.text_field :title, class: "form-control book_title" %>
           </div>
-          <div class="">
+          <div class="form-group">
             <%= f.label :body, "Opinion" %>
-            <%= f.text_area :body, class: "" %>
+            <%= f.text_area :body, class: "form-control book_body" %>
           </div>
-          <div class="">
-            <%= f.submit "Submit", class: "", data: { disable_with: "Submit" } %>
+          <div class="form-group">
+            <%= f.submit "Submit", class: "btn btn-success", data: { disable_with: "Submit" } %>
           </div>
         <% end %>
       </div>
