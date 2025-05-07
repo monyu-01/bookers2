@@ -29,11 +29,13 @@
           </tr>
         </table>
 
-        <div class="row pt-3">
-          <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user" do %>
-            <i class="fas fa-user-cog"></i>
-          <% end %>
-        </div>
+        <% unless user.guest_user? %>
+          <div class="row pt-3">
+            <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user" do %>
+              <i class="fas fa-user-cog"></i>
+            <% end %>
+          </div>
+        <% end %>
 
         <h2 class="pt-3">New book</h2>
 
